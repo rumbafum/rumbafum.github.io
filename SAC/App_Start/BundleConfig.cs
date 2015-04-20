@@ -18,15 +18,12 @@ namespace App.SAC
 
             bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/vendor/jquery/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/js/app").Include(
+            bundles.Add(new ScriptBundle("~/js/app_vendor").Include(
                 "~/scripts/vendor/angular/angular-ui-router.js",
                 "~/scripts/vendor/angular/angular-animate.min.js",
-                "~/scripts/vendor/angular/angular-sanitize.min.js",
-                "~/scripts/filters.js",
-                "~/scripts/services.js",
-                "~/scripts/directives.js",
-                "~/scripts/controllers.js",
-                "~/scripts/app.js"));
+                "~/scripts/vendor/angular/angular-sanitize.min.js"));
+
+            bundles.Add(new ScriptBundle("~/js/app").IncludeDirectory("~/scripts/SAC", "*.js", true));
         }
     }
 }

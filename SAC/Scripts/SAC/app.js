@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-var app = angular.module('SACApp', ['ngSanitize', 'ui.router', 'SACApp.filters', 'SACApp.services', 'SACApp.directives', 'SACApp.controllers']);
+var app = angular.module('SACApp', ['ngSanitize', 'ui.router', 'SACApp.home']);
 
 
 app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $locationProvider, $httpProvider) {
@@ -13,17 +13,17 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             controller: 'HomeCtrl'
 
         })
-        .state('about', {
-            url: '/about',
-            templateUrl: '/views/about',
-            controller: 'AboutCtrl'
-        })
-        .state('login', {
-            url: '/login',
-            layout: 'basic',
-            templateUrl: '/views/login',
-            controller: 'LoginCtrl'
-        })
+        //.state('about', {
+        //    url: '/about',
+        //    templateUrl: '/views/about',
+        //    controller: 'AboutCtrl'
+        //})
+        //.state('login', {
+        //    url: '/login',
+        //    layout: 'basic',
+        //    templateUrl: '/views/login',
+        //    controller: 'LoginCtrl'
+        //})
         .state('otherwise', {
             url: '*path',
             templateUrl: '/views/404',
