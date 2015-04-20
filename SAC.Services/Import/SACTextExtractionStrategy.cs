@@ -15,8 +15,12 @@ namespace SAC.Services.Import
         //Store each line individually. A SortedDictionary will automatically shuffle things around based on the key
         private SortedDictionary<int, StringBuilder> results = new SortedDictionary<int, StringBuilder>();
 
+        private int pages;
+
         //Constructor and some methods that aren't used
-        public SACTextExtractionStrategy() { }
+        public SACTextExtractionStrategy(int pages) {
+            this.pages = pages;
+        }
         public virtual void BeginTextBlock() { }
         public virtual void EndTextBlock() { }
         public virtual void RenderImage(ImageRenderInfo renderInfo) { }
@@ -30,6 +34,7 @@ namespace SAC.Services.Import
                 //Append to the buffer
                 buf.AppendLine(s.Value.ToString());
             }
+            results.Clear();
             return buf.ToString();
         }
         public virtual void RenderText(TextRenderInfo renderInfo) {
@@ -40,6 +45,12 @@ namespace SAC.Services.Import
             Vector end = segment.GetEndPoint();
 
             //Use the Y value of the bottom left corner of the text for the key
+
+            //if (!firstRender && (int)start[1] > (int)lastStart[1])
+            //{
+            //    results.Clear();
+            //}
+
             int currentLineKey = (int)start[1];
 
             if (!firstRender) {

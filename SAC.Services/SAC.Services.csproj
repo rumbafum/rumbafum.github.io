@@ -30,10 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\Lib\ITextSharp\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +52,21 @@
     <Compile Include="Import\PdfImporter.cs" />
     <Compile Include="Import\SACTextExtractionStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AgeRankService.cs" />
+    <Compile Include="AthleteService.cs" />
+    <Compile Include="RaceResultService.cs" />
+    <Compile Include="TeamService.cs" />
+    <Compile Include="RaceService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAC.Models\SAC.Models.csproj">
+      <Project>{2a76d8a8-f844-4c08-a8bf-9928adddbf88}</Project>
+      <Name>SAC.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

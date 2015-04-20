@@ -43,6 +43,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -567,12 +573,34 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\AgeRanksController.cs" />
+    <Compile Include="Controllers\api\AthletesController.cs" />
     <Compile Include="Controllers\api\AuthenticationController.cs" />
     <Compile Include="Controllers\api\ImportController.cs" />
+    <Compile Include="Controllers\api\RaceResultsController.cs" />
+    <Compile Include="Controllers\api\RacesController.cs" />
+    <Compile Include="Controllers\api\TeamsController.cs" />
     <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504201355276_Initial.cs" />
+    <Compile Include="Migrations\201504201355276_Initial.Designer.cs">
+      <DependentUpon>201504201355276_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504201544325_ChangedRaceResult.cs" />
+    <Compile Include="Migrations\201504201544325_ChangedRaceResult.Designer.cs">
+      <DependentUpon>201504201544325_ChangedRaceResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504201605122_AddedAgeRankInRaceResult.cs" />
+    <Compile Include="Migrations\201504201605122_AddedAgeRankInRaceResult.Designer.cs">
+      <DependentUpon>201504201605122_AddedAgeRankInRaceResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504201607228_RaceDateNullable.cs" />
+    <Compile Include="Migrations\201504201607228_RaceDateNullable.Designer.cs">
+      <DependentUpon>201504201607228_RaceDateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Routing\DefaultRoute.cs" />
     <Compile Include="Routing\DefaultRouteHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -580,6 +608,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Models\" />
     <Folder Include="Scripts\SAC\404\" />
     <Folder Include="Scripts\SAC\Shared\" />
     <Folder Include="Views\Shared\" />
@@ -597,6 +626,20 @@
       <Name>SAC.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504201355276_Initial.resx">
+      <DependentUpon>201504201355276_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504201544325_ChangedRaceResult.resx">
+      <DependentUpon>201504201544325_ChangedRaceResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504201605122_AddedAgeRankInRaceResult.resx">
+      <DependentUpon>201504201605122_AddedAgeRankInRaceResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504201607228_RaceDateNullable.resx">
+      <DependentUpon>201504201607228_RaceDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -612,7 +655,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8080/</IISUrl>
+          <IISUrl>http://localhost:5555/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:5555/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
