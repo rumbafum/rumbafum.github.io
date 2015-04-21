@@ -3,36 +3,23 @@
 }
 <h2>{{team.Name}}</h2>
 
-@*<div>
-    <table>
-        <tr>
-            <td>Escalão:</td>
-            <td>{{athlete.AgeRank.Name}}</td>
-        </tr>
-        <tr>
-            <td>Equipa:</td>
-            <td>{{athlete.Team.Name}}</td>
-        </tr>
-    </table>
-</div>
-
-<h4>Resultados:</h4>
+<h4>Atletas:</h4>
 
 <table class="table">
     <thead class="table-header">
         <tr>
-            <td style="width:20%">Data</td>
-            <td style="width:50%">Prova</td>
-            <td style="width:15%">Class.</td>
+            <td style="width:15%">Dorsal</td>
+            <td style="width:45%">Nome</td>
+            <td style="width:25%">Escalão</td>
             <td style="width:15%">Pontos</td>
         </tr>
     </thead>
     <tbody class="table-body">
-        <tr class="table-body-row" ng-repeat="result in resultsData">
-            <td>{{result.Race.RaceDate}}</td>
-            <td><a href="/race/{{result.Race.Id}}">{{result.Race.Name}}</a></td>
-            <td>{{result.Position}}º</td>
-            <td>{{result.Points}}</td>
+        <tr class="table-body-row" ng-repeat="result in athletesData">
+            <td>{{result.Number}}</td>
+            <td><a href="/athlete/{{result.Id}}">{{result.Name}}</a></td>
+            <td>{{result.AgeRank}}</td>
+            <td>{{result.TotalPoints}}</td>
         </tr>
     </tbody>
-</table>*@
+</table>

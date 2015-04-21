@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 angular.module('SACApp.team', [])
-    .controller('TeamCtrl', ['$scope', '$location', '$window', '$stateParams', 'AthleteService', 'RaceService',
-        function ($scope, $location, $window, $stateParams, AthleteService, RaceService) {
+    .controller('TeamCtrl', ['$scope', '$location', '$window', '$stateParams', 'AthleteService', 'TeamService',
+        function ($scope, $location, $window, $stateParams, AthleteService, TeamService) {
 
             $scope.$root.title = 'Varitintas - Sintra a Correr';
             $scope.team = {};
@@ -14,16 +14,16 @@ angular.module('SACApp.team', [])
             });
 
             $scope.init = function () {
-                //AthleteService.getAthlete($stateParams.athleteId, $scope.bindData);
+                TeamService.getTeam($stateParams.teamId, $scope.bindData);
             }
 
             $scope.bindData = function (result) {
-                //$scope.athlete = result;
-                //RaceService.getRaceResultsByAthlete($stateParams.athleteId, function (response) {
-                //    response.forEach(function (r) {
-                //        $scope.resultsData.push(r);
-                //    });
-                //});
+                $scope.team = result;
+                AthleteService.getAthletesByTeam($stateParams.teamId, function (response) {
+                    response.forEach(function (r) {
+                        $scope.athletesData.push(r);
+                    });
+                });
             }
 
         }]);

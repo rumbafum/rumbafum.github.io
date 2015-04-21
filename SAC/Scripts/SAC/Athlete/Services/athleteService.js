@@ -9,6 +9,12 @@ angular.module('SACApp.athlete').service('AthleteService', ['$http', '$rootScope
         });
     };
 
+    service.getAthletesByTeam = function (teamId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/Athletes/?teamId=' + teamId, {}).then(function (response) {
+            callback(response.data);
+        });
+    };
+
     return service;
 
 }]);

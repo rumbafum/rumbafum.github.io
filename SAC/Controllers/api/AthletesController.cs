@@ -35,6 +35,19 @@ namespace App.SAC.Controllers.api
             return Ok(athlete);
         }
 
+        public IQueryable<AthleteDto> GetAthletesByTeam(int teamId)
+        {
+            var athletes = db.Athletes.Where(a => a.TeamId == teamId).OrderBy(a => a.AgeRankId).Include(a => a.AgeRank);
+            return athletes.Select(a => new AthleteDto { 
+                Id = a.Id,
+                Name = a.Name,
+                AgeRank = a.AgeRank.Name,
+                Number = a.Number,
+                Team = a.Team.Name,
+                TotalPoints = db.RaceResults.Where(rr => rr.AthleteId == a.Id).Sum(rr => rr.Points)
+            });
+        }
+
         // PUT: api/Athletes/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutAthlete(int id, Athlete athlete)
