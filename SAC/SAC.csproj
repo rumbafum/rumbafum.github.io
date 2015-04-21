@@ -160,12 +160,16 @@
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\variables.less" />
+    <Content Include="Content\winjs.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\SAC\404\404Ctrl.js" />
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
+    <Content Include="Scripts\SAC\Race\Services\raceService.js" />
+    <Content Include="Scripts\SAC\Race\Controllers\RaceCtrl.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\vendor\jquery\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\vendor\bootstrap\ui-bootstrap-tpls-0.12.1.min.js" />
     <Content Include="Scripts\vendor\jasmine-samples\Player.js" />
     <Content Include="Scripts\vendor\jasmine-samples\PlayerSpec.js" />
     <Content Include="Scripts\vendor\jasmine-samples\Song.js" />
@@ -529,6 +533,14 @@
     <Content Include="Scripts\vendor\jquery\jquery-2.1.3.min.map" />
     <Content Include="Scripts\vendor\angular\version.json" />
     <Content Include="Scripts\SAC\app.js" />
+    <Content Include="Scripts\vendor\winjs\angular-winjs.js" />
+    <Content Include="Scripts\vendor\winjs\css\ui-dark.css" />
+    <Content Include="Scripts\vendor\winjs\css\ui-light.css" />
+    <Content Include="Scripts\vendor\winjs\js\en-US\ui.strings.js" />
+    <Content Include="Scripts\vendor\winjs\js\WinJS.intellisense-setup.js" />
+    <None Include="Scripts\vendor\winjs\js\WinJS.intellisense.js" />
+    <Content Include="Scripts\vendor\winjs\js\WinJS.js" />
+    <Content Include="Scripts\vendor\winjs\js\WinJS.min.js" />
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="crossdomain.xml" />
@@ -546,7 +558,9 @@
     <Content Include="Views\404.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\_PageStart.cshtml" />
-    <Content Include="Views\About.cshtml" />
+    <Content Include="Views\Race.cshtml" />
+    <Content Include="Scripts\vendor\winjs\fonts\Symbols.ttf" />
+    <Content Include="Scripts\vendor\winjs\js\WinJS.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -595,6 +609,7 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\SAC\Home\Services\" />
     <Folder Include="Scripts\SAC\Shared\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-var app = angular.module('SACApp', ['ngSanitize', 'ui.router', 'SACApp.home']);
+var app = angular.module('SACApp', ['winjs', 'ngSanitize', 'ui.router', 'SACApp.race', 'SACApp.home']);
 
 
 app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $locationProvider, $httpProvider) {
@@ -12,6 +12,11 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             templateUrl: '/views/index',
             controller: 'HomeCtrl'
 
+        })
+        .state('race', {
+            url: '/race/:raceId',
+            templateUrl: '/views/race',
+            controller: 'RaceCtrl'
         })
         //.state('about', {
         //    url: '/about',
@@ -49,6 +54,9 @@ app.run(['$templateCache', '$rootScope', '$state', '$stateParams', function ($te
     // Allows to retrieve UI Router state information from inside templates
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    $rootScope.globals = {};
+    $rootScope.globals.serverUrl = '/';
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState) {
 
