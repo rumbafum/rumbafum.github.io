@@ -558,9 +558,9 @@
     <Content Include="Views\404.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\_PageStart.cshtml" />
-    <Content Include="Views\Race.cshtml" />
     <Content Include="Scripts\vendor\winjs\fonts\Symbols.ttf" />
     <Content Include="Scripts\vendor\winjs\js\WinJS.min.js.map" />
+    <Content Include="Views\Race.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
