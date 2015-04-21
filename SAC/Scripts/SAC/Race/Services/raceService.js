@@ -21,6 +21,12 @@ angular.module('SACApp.race').service('RaceService', ['$http', '$rootScope', fun
         });
     }
 
+    service.getRaceResultsByAthlete = function (athleteId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/RaceResults/?athleteId=' + athleteId, {}).then(function (response) {
+            callback(response.data);
+        });
+    }
+
     return service;
 
 }]);

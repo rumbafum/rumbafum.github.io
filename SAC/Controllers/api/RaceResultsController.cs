@@ -47,6 +47,16 @@ namespace App.SAC.Controllers.api
             return results;
         }
 
+        [HttpGet]
+        [Route("Athlete/{athleteId:int}")]
+        public IQueryable<RaceResult> GetRaceResultsByAthlete(int athleteId)
+        {
+            IQueryable<RaceResult> results = db.RaceResults.Where(rr => rr.AthleteId == athleteId)
+                .Include(rr => rr.Race).OrderBy(r => r.Race.RaceDate);
+
+            return results;
+        }
+
 
         // PUT: api/RaceResults/5
         [ResponseType(typeof(void))]

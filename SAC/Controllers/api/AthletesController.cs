@@ -23,11 +23,10 @@ namespace App.SAC.Controllers.api
             return db.Athletes;
         }
 
-        // GET: api/Athletes/5
         [ResponseType(typeof(Athlete))]
-        public async Task<IHttpActionResult> GetAthlete(int id)
+        public IHttpActionResult GetAthleteWithData(int id)
         {
-            Athlete athlete = await db.Athletes.FindAsync(id);
+            Athlete athlete = db.Athletes.Where(a => a.Id == id).Include(a => a.AgeRank).Include(a => a.Team).FirstOrDefault();
             if (athlete == null)
             {
                 return NotFound();

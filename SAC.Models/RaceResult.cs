@@ -10,11 +10,13 @@ namespace SAC.Models
     {
         public int Id { get; set; }
         public int Position { get; set; }
+        public int Points { get; set; }
 
         public int RaceId { get; set; }
         public int AthleteId { get; set; }
         public int AgeRankId { get; set; }
 
         public Athlete Athlete { get; set; }
+        public Race Race { get; set; }
     }
 }

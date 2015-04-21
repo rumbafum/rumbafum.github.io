@@ -84,7 +84,7 @@ namespace SAC.Services.Import
                     }
 
                     if(raceId != -1)
-                        raceResultService.AddRaceResult(position, athleteId, currentAgeRankId, raceId);
+                        raceResultService.AddRaceResult(position, points, athleteId, currentAgeRankId, raceId);
                 }
             }
 

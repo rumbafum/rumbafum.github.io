@@ -19,14 +19,23 @@
 
 <h4>Resultados:</h4>
 
-<win-list-view class="win-selectionstylefilled"
-               item-data-source="resultsData" selection-mode="gridMode.selectionMode" tap-behavior="gridMode.tapBehavior">
-    <win-item-template>
-        <div class="">
-            <div class="">
-                <h6>{{item.data.Athlete.Name}}</h6>
-            </div>
-        </div>
-    </win-item-template>
-    <win-grid-layout orientation="vertical"></win-grid-layout>
-</win-list-view>
+<table class="table">
+    <thead class="table-header">
+        <tr>
+            <td style="width:10%">Class.</td>
+            <td style="width:10%">Dorsal</td>
+            <td style="width:30%">Nome</td>
+            <td style="width:35%">Equipa</td>
+            <td style="width:15%">Pontos</td>
+        </tr>
+    </thead>
+    <tbody class="table-body">
+        <tr class="table-body-row" ng-repeat="result in resultsData">
+            <td>{{result.Position}}º</td>
+            <td>{{result.Athlete.Number}}</td>
+            <td><a href="/athlete/{{result.Athlete.Id}}">{{result.Athlete.Name}}</a></td>
+            <td>{{result.Athlete.Team.Name}}</td>
+            <td>{{result.Points}}</td>
+        </tr>
+    </tbody>
+</table>

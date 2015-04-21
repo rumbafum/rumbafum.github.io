@@ -16,11 +16,12 @@ namespace SAC.Services
             _context = context;
         }
 
-        public RaceResult AddRaceResult(int position, int athleteId, int ageRankId, int raceId)
+        public RaceResult AddRaceResult(int position, int points, int athleteId, int ageRankId, int raceId)
         {
             RaceResult result = _context.RaceResults.Add(new RaceResult
             {
                 Position = position,
+                Points = points,
                 AthleteId = athleteId,
                 AgeRankId = ageRankId,
                 RaceId = raceId

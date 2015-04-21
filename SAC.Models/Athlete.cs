@@ -22,5 +22,7 @@ namespace SAC.Models
         public int AgeRankId { get; set; }
 
         public Team Team { get; set; }
+
+        public AgeRank AgeRank { get; set; }
     }
 }

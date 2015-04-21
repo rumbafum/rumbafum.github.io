@@ -164,9 +164,11 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\SAC\404\404Ctrl.js" />
     <Content Include="Scripts\SAC\AgeRank\Services\ageRankService.js" />
+    <Content Include="Scripts\SAC\Athlete\Controllers\athleteCtrl.js" />
+    <Content Include="Scripts\SAC\Athlete\Services\athleteService.js" />
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
     <Content Include="Scripts\SAC\Race\Services\raceService.js" />
-    <Content Include="Scripts\SAC\Race\Controllers\RaceCtrl.js" />
+    <Content Include="Scripts\SAC\Race\Controllers\raceCtrl.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\vendor\jquery\jquery-2.1.3.intellisense.js" />
@@ -562,6 +564,7 @@
     <Content Include="Scripts\vendor\winjs\fonts\Symbols.ttf" />
     <Content Include="Scripts\vendor\winjs\js\WinJS.min.js.map" />
     <Content Include="Views\Race.cshtml" />
+    <Content Include="Views\Athlete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -601,6 +604,10 @@
     <Compile Include="Migrations\201504201607228_RaceDateNullable.Designer.cs">
       <DependentUpon>201504201607228_RaceDateNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504211239068_RaceResultPoints.cs" />
+    <Compile Include="Migrations\201504211239068_RaceResultPoints.Designer.cs">
+      <DependentUpon>201504211239068_RaceResultPoints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Routing\DefaultRoute.cs" />
     <Compile Include="Routing\DefaultRouteHandler.cs" />
@@ -639,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504201607228_RaceDateNullable.resx">
       <DependentUpon>201504201607228_RaceDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504211239068_RaceResultPoints.resx">
+      <DependentUpon>201504211239068_RaceResultPoints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

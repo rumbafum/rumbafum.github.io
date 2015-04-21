@@ -1,4 +1,8 @@
-﻿.win-listview_small { height: 160px; }
+﻿body{
+    overflow-y: auto !important;
+}
+
+.win-listview_small { height: 160px; }
 
 .smallListIconTextItem
 {
@@ -41,4 +45,20 @@
 
 .listView .win-container.win-container-even {
     background-color: #444;
+}
+
+
+.table {
+    border: 2px solid #ccc;
+    border-collapse: collapse;
+}
+
+.table-header {
+    background-color: rgb(87, 41, 193);
+    color: rgb(255, 255, 255);
+}
+
+.table-body > tr.table-body-row:nth-of-type(odd)  {
+    background-color: #ccc;
+    color:black;
 }
