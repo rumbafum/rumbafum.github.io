@@ -29,7 +29,7 @@
     </thead>
     <tbody class="table-body">
         <tr class="table-body-row" ng-repeat="result in resultsData">
-            <td>{{result.Race.RaceDate}}</td>
+            <td>{{result.Race.RaceDate | date:dateFormat}}</td>
             <td><a href="/race/{{result.Race.Id}}">{{result.Race.Name}}</a></td>
             <td>{{result.Position}}º</td>
             <td>{{result.Points}}</td>

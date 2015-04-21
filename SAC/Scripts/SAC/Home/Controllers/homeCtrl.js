@@ -16,6 +16,7 @@ angular.module('SACApp.home', [])
             }
         };
 
+        $scope.dateFormat = "dd/MM/yyyy";
         $scope.$root.title = 'Varitintas - Sintra a Correr';
         $scope.listData = [];
         $scope.mode = Mode.single;
