@@ -13,22 +13,28 @@ namespace SAC.Services.Import
     {
         public static string ImportPdf(string path, DateTime? raceDate, SACServiceContext db)
         {
-            string pdfText = ExtractTextFromPdf(path);
+            List<string> teams;
+            using (TeamService teamService = new TeamService(db))
+                teams = teamService.GetTeams().Select(t => t.Name).ToList();
+
+            string pdfText = ExtractTextFromPdf(path, teams);
 
             if(string.IsNullOrWhiteSpace(pdfText))
                 return "No data to import.";
             return ProcessText(pdfText, raceDate, db);
         }
 
-        private static string ExtractTextFromPdf(string path)
+        private static string ExtractTextFromPdf(string path, List<string> teams)
         {
             using (PdfReader reader = new PdfReader(path))
             {
-                SACTextExtractionStrategy strategy = new SACTextExtractionStrategy(reader.NumberOfPages);
+                SACTextExtractionStrategy strategy = new SACTextExtractionStrategy(reader.NumberOfPages, teams);
 
                 StringBuilder text = new StringBuilder();
                 for (int i = 1; i <= reader.NumberOfPages; i++)
+                {
                     text.Append(PdfTextExtractor.GetTextFromPage(reader, i, strategy));
+                }
                 return text.ToString();
             }
         }

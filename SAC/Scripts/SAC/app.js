@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-var app = angular.module('SACApp', ['winjs', 'ngSanitize', 'ui.router', 'SACApp.race', 'SACApp.ageRank', 'SACApp.athlete', 'SACApp.home']);
+var app = angular.module('SACApp', ['winjs', 'ngSanitize', 'ui.router', 'SACApp.race', 'SACApp.ageRank', 'SACApp.athlete', 'SACApp.team', 'SACApp.home']);
 
 
 app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $locationProvider, $httpProvider) {
@@ -11,7 +11,6 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             url: '/',
             templateUrl: '/views/index',
             controller: 'HomeCtrl'
-
         })
         .state('race', {
             url: '/race/:raceId',
@@ -22,6 +21,11 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             url: '/athlete/:athleteId',
             templateUrl: '/views/athlete',
             controller: 'AthleteCtrl'
+        })
+        .state('team', {
+            url: '/team/:teamId',
+            templateUrl: '/views/team',
+            controller: 'TeamCtrl'
         })
         //.state('about', {
         //    url: '/about',

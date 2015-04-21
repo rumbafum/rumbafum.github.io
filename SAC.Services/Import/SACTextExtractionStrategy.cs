@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SAC.Services.Import
@@ -11,6 +12,7 @@ namespace SAC.Services.Import
     {
         private Vector lastStart;
         private Vector lastEnd;
+        private List<string> _teams = new List<string>();
 
         //Store each line individually. A SortedDictionary will automatically shuffle things around based on the key
         private SortedDictionary<int, StringBuilder> results = new SortedDictionary<int, StringBuilder>();
@@ -18,8 +20,10 @@ namespace SAC.Services.Import
         private int pages;
 
         //Constructor and some methods that aren't used
-        public SACTextExtractionStrategy(int pages) {
+        public SACTextExtractionStrategy(int pages, List<string> teams)
+        {
             this.pages = pages;
+            _teams.AddRange(teams);
         }
         public virtual void BeginTextBlock() { }
         public virtual void EndTextBlock() { }
@@ -29,10 +33,54 @@ namespace SAC.Services.Import
         public virtual String GetResultantText() {
             //Buffer
             StringBuilder buf = new StringBuilder();
+            bool inRank = false;
             //Loop through each line (which is already sorted top to bottom)
             foreach (var s in results) {
+                string newSplit = string.Empty;
+                if (inRank)
+                {
+                    List<string> arr = s.Value.ToString().Split(new string[]{"\t"}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    if (arr.Count != 5 && arr.Count > 2)
+                    {
+                        var result = Regex.Match(arr[arr.Count-1], @"\d+$").Value;
+                        if (!string.IsNullOrWhiteSpace(result) && result != arr[arr.Count - 1])
+                        {
+                            arr[arr.Count - 1] = arr[arr.Count - 1].Replace(result, "");
+                            arr.Add(result);
+                        }
+                        if (arr.Count == 4)
+                        {
+                            foreach(string t in _teams){
+                                if (arr[2].Contains(t))
+                                {
+                                    arr[2] = arr[2].Replace(t, "");
+                                    string points = arr[3];
+                                    arr.RemoveAt(3);
+                                    arr.Add(t);
+                                    arr.Add(points);
+                                    break;
+                                }
+                            }
+                        }
+                        foreach (var str in arr)
+                            newSplit += str + "\t";
+                    }
+                    if (arr.Count == 5)
+                    {
+                        if(!_teams.Contains(arr[3]))
+                            _teams.Add(arr[3]);
+                    }
+                }
+
                 //Append to the buffer
-                buf.AppendLine(s.Value.ToString());
+                if(!string.IsNullOrWhiteSpace(newSplit))
+                    buf.AppendLine(newSplit);
+                else
+                    buf.AppendLine(s.Value.ToString());
+                if (s.Value.ToString().StartsWith("Class."))
+                    inRank = true;
+                if (string.IsNullOrWhiteSpace(s.Value.ToString()))
+                    inRank = false;
             }
             results.Clear();
             return buf.ToString();
