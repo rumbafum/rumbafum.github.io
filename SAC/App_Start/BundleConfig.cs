@@ -15,7 +15,7 @@ namespace App.SAC
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/content/css/app").Include(
-                "~/scripts/vendor/winjs/css/ui-dark.css",
+                "~/scripts/vendor/winjs/css/ui-light.css",
                 "~/content/winjs.css",
                 "~/content/app.css"));
 

@@ -13,6 +13,7 @@ using SAC.Models;
 
 namespace App.SAC.Controllers.api
 {
+    [RoutePrefix("api/RaceResults")]
     public class RaceResultsController : ApiController
     {
         private SACServiceContext db = new SACServiceContext();
@@ -35,6 +36,17 @@ namespace App.SAC.Controllers.api
 
             return Ok(raceResult);
         }
+
+        [HttpGet]
+        [Route("{raceId:int}/{ageRankId:int}")]
+        public IQueryable<RaceResult> GetRaceResultsByAgeRank(int raceId, int ageRankId)
+        {
+            IQueryable<RaceResult> results = db.RaceResults.Where(rr => rr.RaceId == raceId && rr.AgeRankId == ageRankId)
+                .Include(rr => rr.Athlete).Include(rr => rr.Athlete.Team).OrderBy(r => r.Position);
+
+            return results;
+        }
+
 
         // PUT: api/RaceResults/5
         [ResponseType(typeof(void))]

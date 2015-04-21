@@ -163,6 +163,7 @@
     <Content Include="Content\winjs.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\SAC\404\404Ctrl.js" />
+    <Content Include="Scripts\SAC\AgeRank\Services\ageRankService.js" />
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
     <Content Include="Scripts\SAC\Race\Services\raceService.js" />
     <Content Include="Scripts\SAC\Race\Controllers\RaceCtrl.js" />

@@ -14,5 +14,7 @@ namespace SAC.Models
         public int RaceId { get; set; }
         public int AthleteId { get; set; }
         public int AgeRankId { get; set; }
+
+        public Athlete Athlete { get; set; }
     }
 }

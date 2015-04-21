@@ -15,6 +15,12 @@ angular.module('SACApp.race').service('RaceService', ['$http', '$rootScope', fun
         });
     };
 
+    service.getRaceResultsByAgeRank = function (raceId, ageRankId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/RaceResults/?raceId=' + raceId + '&ageRankId=' + ageRankId, {}).then(function (response) {
+            callback(response.data);
+        });
+    }
+
     return service;
 
 }]);

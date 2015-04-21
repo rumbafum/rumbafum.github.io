@@ -1,4 +1,6 @@
-﻿.smallListIconTextItem
+﻿.win-listview_small { height: 160px; }
+
+.smallListIconTextItem
 {
     width: 100%;
     height: 70px;

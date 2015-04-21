@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-var app = angular.module('SACApp', ['winjs', 'ngSanitize', 'ui.router', 'SACApp.race', 'SACApp.home']);
+var app = angular.module('SACApp', ['winjs', 'ngSanitize', 'ui.router', 'SACApp.race', 'SACApp.ageRank', 'SACApp.home']);
 
 
 app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $locationProvider, $httpProvider) {
