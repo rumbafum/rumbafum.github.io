@@ -32,6 +32,11 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             templateUrl: '/views/teamclassification',
             controller: 'TeamClassificationCtrl'
         })
+        .state('classification', {
+            url: '/classification',
+            templateUrl: '/views/classification',
+            controller: 'AthleteClassificationCtrl'
+        })
         .state('otherwise', {
             url: '*path',
             templateUrl: '/views/404',

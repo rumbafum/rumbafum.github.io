@@ -164,6 +164,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\SAC\404\404Ctrl.js" />
     <Content Include="Scripts\SAC\AgeRank\Services\ageRankService.js" />
+    <Content Include="Scripts\SAC\Athlete\athleteModule.js" />
+    <Content Include="Scripts\SAC\Athlete\Controllers\athleteClassificationCtrl.js" />
     <Content Include="Scripts\SAC\Athlete\Controllers\athleteCtrl.js" />
     <Content Include="Scripts\SAC\Athlete\Services\athleteService.js" />
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
@@ -573,6 +575,7 @@
     <Content Include="Views\Race.cshtml" />
     <Content Include="Views\Team.cshtml" />
     <Content Include="Views\TeamClassification.cshtml" />
+    <Content Include="Views\Classification.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -40,16 +40,22 @@ angular.module('SACApp.race', [])
                 response.forEach(function (ageRank) {
                     $scope.ageRankData.push(ageRank);
                 });
+                $scope.ageRankSelection = [0];
+                $scope.getResults();
             });
         }
 
-        $scope.ageRankClicked = function (event) {
+        $scope.getResults = function () {
             RaceService.getRaceResultsByAgeRank($scope.race.Id, $scope.ageRankData[$scope.ageRankSelection[0]].Id, function (result) {
                 $scope.resultsData = [];
                 result.forEach(function (r) {
                     $scope.resultsData.push(r);
                 });
             });
+        }
+
+        $scope.ageRankClicked = function (event) {
+            $scope.getResults();
         }
 
     }]);

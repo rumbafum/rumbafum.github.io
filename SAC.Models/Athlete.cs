@@ -35,4 +35,16 @@ namespace SAC.Models
         public string AgeRank { get; set; }
         public int TotalPoints { get; set; }
     }
+
+    public class AthleteClassificationDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Number { get; set; }
+        public string Team { get; set; }
+        public int TeamId { get; set; }
+        public int Points { get; set; }
+        public int Races { get; set; }
+        public int Position { get; set; }
+    }
 }

@@ -15,6 +15,12 @@ angular.module('SACApp.athlete').service('AthleteService', ['$http', '$rootScope
         });
     };
 
+    service.getClassification = function (ageRankId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/Athletes/?ageRankId=' + ageRankId, {}).then(function (response) {
+            callback(response.data);
+        });
+    };
+
     return service;
 
 }]);

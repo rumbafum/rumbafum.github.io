@@ -48,6 +48,32 @@ namespace App.SAC.Controllers.api
             });
         }
 
+        public List<AthleteClassificationDto> GetAthletesClassification(int ageRankId)
+        {
+            int position = 1;
+            IQueryable<AthleteClassificationDto> collection = 
+                db.RaceResults.Where(rr => rr.AgeRankId == ageRankId).GroupBy(rr => rr.AthleteId).OrderByDescending(tc => tc.Sum(x => x.Points)).
+                    Select(rr => new AthleteClassificationDto
+                    {
+                        Id = rr.FirstOrDefault().AthleteId,
+                        Name = rr.FirstOrDefault().Athlete.Name,
+                        Number = rr.FirstOrDefault().Athlete.Number,
+                        Team = rr.FirstOrDefault().Athlete.Team.Name,
+                        TeamId = rr.FirstOrDefault().Athlete.TeamId,
+                        Points = rr.Sum(x => x.Points),
+                        Position = 0,
+                        Races = rr.Count()
+                    });
+            var list = collection.ToList();
+            foreach (AthleteClassificationDto item in list)
+            {
+                item.Position = position;
+                position++;
+            }
+
+            return list;
+        }
+
         // PUT: api/Athletes/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutAthlete(int id, Athlete athlete)

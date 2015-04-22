@@ -1,0 +1,42 @@
+﻿@{
+    PageData["title"] = "Team Classification";
+}
+
+<h4>Escalões:</h4>
+<win-list-view class="win-listview_small win-selectionstylefilled"
+               item-data-source="ageRankData" selection="ageRankSelection" selection-mode="mode.selectionMode" tap-behavior="mode.tapBehavior"
+               on-item-invoked="ageRankClicked($event)">
+    <win-item-template>
+        <div class="">
+            <div class="">
+                <h6>{{item.data.Name}}</h6>
+            </div>
+        </div>
+    </win-item-template>
+    <win-grid-layout orientation="vertical" maximum-rows-or-columns="3"></win-grid-layout>
+</win-list-view>
+
+<h4>Resultados:</h4>
+
+<table class="table">
+    <thead class="table-header">
+        <tr>
+            <td style="width:10%">Class.</td>
+            <td style="width:10%">Dorsal</td>
+            <td style="width:30%">Nome</td>
+            <td style="width:30%">Equipa</td>
+            <td style="width:10%">Nº Provas</td>
+            <td style="width:10%">Pontos</td>
+        </tr>
+    </thead>
+    <tbody class="table-body">
+        <tr class="table-body-row" ng-repeat="result in resultsData">
+            <td>{{result.Position}}º</td>
+            <td>{{result.Number}}º</td>
+            <td><a href="/athlete/{{result.Id}}">{{result.Name}}</a></td>
+            <td><a href="/team/{{result.TeamId}}">{{result.Team}}</a></td>
+            <td>{{result.Races}}</td>
+            <td>{{result.Points}}</td>
+        </tr>
+    </tbody>
+</table>
