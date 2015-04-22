@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 angular.module('SACApp.race', [])
-    .controller('RaceCtrl', ['$scope', '$location', '$window', '$stateParams', 'RaceService', 'AgeRankService',
-        function ($scope, $location, $window, $stateParams, RaceService, AgeRankService) {
+    .controller('RaceCtrl', ['$scope', '$location', '$window', '$stateParams', 'RaceService', 'AgeRankService', 'TeamService',
+        function ($scope, $location, $window, $stateParams, RaceService, AgeRankService, TeamService) {
 
             var Mode = {
                 single: {
@@ -21,6 +21,8 @@ angular.module('SACApp.race', [])
         $scope.race = {};
         $scope.ageRankData = [];
         $scope.resultsData = [];
+        $scope.teamResultsData = [];
+        $scope.allTeamResultsData = [];
         $scope.ageRankSelection = [];
         $scope.mode = Mode.single;
         $scope.gridMode = Mode.readOnly;
@@ -35,6 +37,11 @@ angular.module('SACApp.race', [])
         }
 
         $scope.bindData = function (response) {
+            TeamService.getClassificationByRace($stateParams.raceId, function (result) {
+                result.forEach(function (r) {
+                    $scope.allTeamResultsData.push(r);
+                });
+            });
             $scope.race = response;
             AgeRankService.getAgeRanks(function (response) {
                 response.forEach(function (ageRank) {
@@ -42,6 +49,7 @@ angular.module('SACApp.race', [])
                 });
                 $scope.ageRankSelection = [0];
                 $scope.getResults();
+                $scope.getTeamResults();
             });
         }
 
@@ -54,8 +62,18 @@ angular.module('SACApp.race', [])
             });
         }
 
+        $scope.getTeamResults = function () {
+            TeamService.getClassificationByRaceAndAgeRank($stateParams.raceId, $scope.ageRankData[$scope.ageRankSelection[0]].Id, function (result) {
+                $scope.teamResultsData = [];
+                result.forEach(function (r) {
+                    $scope.teamResultsData.push(r);
+                });
+            });
+        }
+
         $scope.ageRankClicked = function (event) {
             $scope.getResults();
+            $scope.getTeamResults();
         }
 
     }]);

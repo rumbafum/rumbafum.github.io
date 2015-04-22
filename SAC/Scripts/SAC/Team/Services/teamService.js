@@ -15,6 +15,18 @@ angular.module('SACApp.team').service('TeamService', ['$http', '$rootScope', fun
         });
     };
 
+    service.getClassificationByRace = function (raceId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/Teams/?raceId=' + raceId, {}).then(function (response) {
+            callback(response.data);
+        });
+    };
+
+    service.getClassificationByRaceAndAgeRank = function (raceId, ageRankId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/Teams/?raceId=' + raceId + '&ageRankId=' + ageRankId, {}).then(function (response) {
+            callback(response.data);
+        });
+    };
+
     return service;
 
 }]);

@@ -15,6 +15,7 @@ namespace App.SAC
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/content/css/app").Include(
+                "~/content/bootstrap-3.3.4-dist/css/bootstrap.min.css",
                 "~/scripts/vendor/winjs/css/ui-light.css",
                 "~/content/winjs.css",
                 "~/content/app.css"));
@@ -22,6 +23,7 @@ namespace App.SAC
             bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/vendor/jquery/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/js/app_vendor").Include(
+                "~/content/bootstrap-3.3.4-dist/js/bootstrap.min.js",
                 "~/scripts/vendor/winjs/js/WinJS.min.js",
                 "~/scripts/vendor/winjs/angular-winjs.js",
                 "~/scripts/vendor/bootstrap/ui-bootstrap-tpls-0.12.1.min.js",

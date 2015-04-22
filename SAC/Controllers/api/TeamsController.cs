@@ -36,6 +36,51 @@ namespace App.SAC.Controllers.api
             return Ok(team);
         }
 
+        public List<TeamClassificationDto> GetTeamClassificationByRace(int raceId)
+        {
+            int position = 1;
+            IQueryable<TeamClassificationDto> collection = 
+                db.RaceResults.Where(rr => rr.RaceId == raceId).GroupBy(rr => rr.Athlete.TeamId).OrderByDescending(tc => tc.Sum(x => x.Points)).
+                    Select(rr => new TeamClassificationDto
+                    {
+                        Id = rr.FirstOrDefault().Athlete.TeamId,
+                        Name = rr.FirstOrDefault().Athlete.Team.Name,
+                        Points = rr.Sum(x => x.Points),
+                        Position = 0
+                    });
+            var list = collection.ToList();
+            foreach (TeamClassificationDto item in list)
+            {
+                item.Position = position;
+                position++;
+            }
+
+            return list;
+        }
+
+        public List<TeamClassificationDto> GetTeamClassificationByRaceAndAgeRank(int raceId, int ageRankId)
+        {
+            int position = 1;
+            IQueryable<TeamClassificationDto> collection =
+                db.RaceResults.Where(rr => rr.RaceId == raceId && rr.AgeRankId == ageRankId).GroupBy(rr => rr.Athlete.TeamId).
+                    OrderByDescending(tc => tc.Sum(x => x.Points)).
+                    Select(rr => new TeamClassificationDto
+                    {
+                        Id = rr.FirstOrDefault().Athlete.TeamId,
+                        Name = rr.FirstOrDefault().Athlete.Team.Name,
+                        Points = rr.Sum(x => x.Points),
+                        Position = 0
+                    });
+            var list = collection.ToList();
+            foreach (TeamClassificationDto item in list)
+            {
+                item.Position = position;
+                position++;
+            }
+
+            return list;
+        }
+
         public List<TeamClassificationDto> GetTeamClassification(int ageRankId)
         {
             int position = 1;

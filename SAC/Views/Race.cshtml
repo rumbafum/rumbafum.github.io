@@ -19,23 +19,83 @@
 
 <h4>Resultados:</h4>
 
-<table class="table">
-    <thead class="table-header">
-        <tr>
-            <td style="width:10%">Class.</td>
-            <td style="width:10%">Dorsal</td>
-            <td style="width:30%">Nome</td>
-            <td style="width:35%">Equipa</td>
-            <td style="width:15%">Pontos</td>
-        </tr>
-    </thead>
-    <tbody class="table-body">
-        <tr class="table-body-row" ng-repeat="result in resultsData">
-            <td>{{result.Position}}º</td>
-            <td>{{result.Athlete.Number}}</td>
-            <td><a href="/athlete/{{result.Athlete.Id}}">{{result.Athlete.Name}}</a></td>
-            <td><a href="/team/{{result.Athlete.Team.Id}}">{{result.Athlete.Team.Name}}</a></td>
-            <td>{{result.Points}}</td>
-        </tr>
-    </tbody>
-</table>
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#athlete" aria-controls="athlete" role="tab" data-toggle="tab">Individual</a></li>
+        <li role="presentation"><a href="#team" aria-controls="team" role="tab" data-toggle="tab">Equipa</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="athlete">
+
+            <h4>{{ageRankData[ageRankSelection[0]].Name}}</h4>
+
+            <table class="table">
+                <thead class="table-header">
+                    <tr>
+                        <td style="width:10%">Class.</td>
+                        <td style="width:10%">Dorsal</td>
+                        <td style="width:30%">Nome</td>
+                        <td style="width:35%">Equipa</td>
+                        <td style="width:15%">Pontos</td>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr class="table-body-row" ng-repeat="result in resultsData">
+                        <td>{{result.Position}}º</td>
+                        <td>{{result.Athlete.Number}}</td>
+                        <td><a href="/athlete/{{result.Athlete.Id}}">{{result.Athlete.Name}}</a></td>
+                        <td><a href="/team/{{result.Athlete.Team.Id}}">{{result.Athlete.Team.Name}}</a></td>
+                        <td>{{result.Points}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="team">
+
+            <h4>{{ageRankData[ageRankSelection[0]].Name}}</h4>
+
+            <table class="table">
+                <thead class="table-header">
+                    <tr>
+                        <td style="width:20%">Class.</td>
+                        <td style="width:60%">Equipa</td>
+                        <td style="width:20%">Pontos</td>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr class="table-body-row" ng-repeat="result in teamResultsData">
+                        <td>{{result.Position}}º</td>
+                        <td><a href="/team/{{result.Id}}">{{result.Name}}</a></td>
+                        <td>{{result.Points}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Geral:</h4>
+
+            <table class="table">
+                <thead class="table-header">
+                    <tr>
+                        <td style="width:20%">Class.</td>
+                        <td style="width:60%">Equipa</td>
+                        <td style="width:20%">Pontos</td>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr class="table-body-row" ng-repeat="result in allTeamResultsData">
+                        <td>{{result.Position}}º</td>
+                        <td><a href="/team/{{result.Id}}">{{result.Name}}</a></td>
+                        <td>{{result.Points}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
