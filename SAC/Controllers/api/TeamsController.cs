@@ -36,6 +36,37 @@ namespace App.SAC.Controllers.api
             return Ok(team);
         }
 
+        public List<TeamClassificationDto> GetTeamClassification(int ageRankId)
+        {
+            int position = 1;
+            IQueryable<TeamClassificationDto> collection;
+            if(ageRankId == -1)
+                collection = db.RaceResults.GroupBy(rr => rr.Athlete.TeamId).OrderByDescending(tc => tc.Sum(x => x.Points)).Select(rr => new TeamClassificationDto
+                { 
+                    Id = rr.FirstOrDefault().Athlete.TeamId,
+                    Name = rr.FirstOrDefault().Athlete.Team.Name,
+                    Points = rr.Sum(x => x.Points),
+                    Position = 0
+                });
+            else
+                collection = db.RaceResults.Where(rr => rr.AgeRankId == ageRankId).GroupBy(rr => rr.Athlete.TeamId).OrderByDescending(tc => tc.Sum(x => x.Points)).
+                    Select(rr => new TeamClassificationDto
+                {
+                    Id = rr.FirstOrDefault().Athlete.TeamId,
+                    Name = rr.FirstOrDefault().Athlete.Team.Name,
+                    Points = rr.Sum(x => x.Points),
+                    Position = 0
+                });
+            var list = collection.ToList();
+            foreach (TeamClassificationDto item in list)
+            {
+                item.Position = position;
+                position++;
+            }
+                
+            return list;
+        }
+
         // PUT: api/Teams/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutTeam(int id, Team team)

@@ -27,17 +27,11 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
             templateUrl: '/views/team',
             controller: 'TeamCtrl'
         })
-        //.state('about', {
-        //    url: '/about',
-        //    templateUrl: '/views/about',
-        //    controller: 'AboutCtrl'
-        //})
-        //.state('login', {
-        //    url: '/login',
-        //    layout: 'basic',
-        //    templateUrl: '/views/login',
-        //    controller: 'LoginCtrl'
-        //})
+        .state('teamclassification', {
+            url: '/teamclassification',
+            templateUrl: '/views/teamclassification',
+            controller: 'TeamClassificationCtrl'
+        })
         .state('otherwise', {
             url: '*path',
             templateUrl: '/views/404',

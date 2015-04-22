@@ -169,8 +169,10 @@
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
     <Content Include="Scripts\SAC\Race\Services\raceService.js" />
     <Content Include="Scripts\SAC\Race\Controllers\raceCtrl.js" />
+    <Content Include="Scripts\SAC\Team\Controllers\teamClassificationCtrl.js" />
     <Content Include="Scripts\SAC\Team\Controllers\teamCtrl.js" />
     <Content Include="Scripts\SAC\Team\Services\teamService.js" />
+    <Content Include="Scripts\SAC\Team\teamModule.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\vendor\jquery\jquery-2.1.3.intellisense.js" />
@@ -570,6 +572,7 @@
     <Content Include="Scripts\vendor\winjs\js\WinJS.min.js.map" />
     <Content Include="Views\Race.cshtml" />
     <Content Include="Views\Team.cshtml" />
+    <Content Include="Views\TeamClassification.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

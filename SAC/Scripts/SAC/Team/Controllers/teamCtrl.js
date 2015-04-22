@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('SACApp.team', [])
+angular.module('SACApp.team')
     .controller('TeamCtrl', ['$scope', '$location', '$window', '$stateParams', 'AthleteService', 'TeamService',
         function ($scope, $location, $window, $stateParams, AthleteService, TeamService) {
 

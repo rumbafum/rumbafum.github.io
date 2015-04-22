@@ -9,6 +9,12 @@ angular.module('SACApp.team').service('TeamService', ['$http', '$rootScope', fun
         });
     };
 
+    service.getClassification = function (ageRankId, callback) {
+        return $http.get($rootScope.globals.serverUrl + 'api/Teams/?ageRankId=' + ageRankId, {}).then(function (response) {
+            callback(response.data);
+        });
+    };
+
     return service;
 
 }]);
