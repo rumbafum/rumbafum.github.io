@@ -179,6 +179,9 @@
     <Content Include="Scripts\SAC\Home\Controllers\homeCtrl.js" />
     <Content Include="Scripts\SAC\Race\Services\raceService.js" />
     <Content Include="Scripts\SAC\Race\Controllers\raceCtrl.js" />
+    <Content Include="Scripts\SAC\Shared\Directives\loadingWidget.js" />
+    <Content Include="Scripts\SAC\Shared\Services\config.js" />
+    <Content Include="Scripts\SAC\Shared\Services\requestNotificationChannel.js" />
     <Content Include="Scripts\SAC\Team\Controllers\teamClassificationCtrl.js" />
     <Content Include="Scripts\SAC\Team\Controllers\teamCtrl.js" />
     <Content Include="Scripts\SAC\Team\Services\teamService.js" />
@@ -643,7 +646,6 @@
     <Folder Include="Images\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\SAC\Home\Services\" />
-    <Folder Include="Scripts\SAC\Shared\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

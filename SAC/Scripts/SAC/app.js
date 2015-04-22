@@ -48,6 +48,8 @@ app.config(['$stateProvider', '$locationProvider', '$httpProvider', function ($s
         requireBase: false
     });
 
+    $httpProvider.interceptors.push('errorInterceptor');
+
 }]);
 
 // Gets executed after the injector is created and are used to kickstart the application. Only instances and constants
