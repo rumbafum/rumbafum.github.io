@@ -31,5 +31,15 @@ namespace App.SAC.Controllers.api
             else
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, result);
         }
+
+        [HttpGet]
+        public HttpResponseMessage ImportInitialData(string path)
+        {
+            string result = PdfImporter.ImportInitialData(path, db);
+            if (string.IsNullOrEmpty(result))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, result);
+        }
     }
 }

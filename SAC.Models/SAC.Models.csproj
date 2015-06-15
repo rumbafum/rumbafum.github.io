@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgeRank.cs" />
+    <Compile Include="AgeRankMappings.cs" />
     <Compile Include="Athlete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />

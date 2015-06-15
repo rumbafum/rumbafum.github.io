@@ -16,9 +16,20 @@ namespace SAC.Services
             _context = context;
         }
 
+        public Athlete GetAthlete(int id)
+        {
+            return _context.Athletes.Find(id);
+        }
+
         public int AthleteExists(string athleteName)
         {
             Athlete athlete = _context.Athletes.Where(t => t.Name == athleteName).FirstOrDefault();
+            return athlete != null ? athlete.Id : -1;
+        }
+
+        public int AthleteExists(int bibNumber)
+        {
+            Athlete athlete = _context.Athletes.Where(t => t.Number == bibNumber).FirstOrDefault();
             return athlete != null ? athlete.Id : -1;
         }
 
@@ -38,6 +49,13 @@ namespace SAC.Services
             });
             _context.SaveChanges();
             return athlete;
+        }
+
+        public void UpdateAthlete(int id, int ageRankId)
+        {
+            Athlete a = _context.Athletes.Find(id);
+            a.AgeRankId = ageRankId;
+            _context.SaveChanges();
         }
 
         public void Dispose()
