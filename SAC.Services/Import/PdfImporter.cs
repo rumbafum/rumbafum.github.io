@@ -95,7 +95,8 @@ namespace SAC.Services.Import
                         bibNumber = Convert.ToInt16(result[1].Trim());
                         athleteName = result[2];
                         teamName = result[3];
-                        points = Convert.ToInt16(result[4].Trim());
+                        points = 0;
+                        Int32.TryParse(result[4].Trim(), out points);
                     }
                     else
                     {
@@ -103,7 +104,8 @@ namespace SAC.Services.Import
                         bibNumber = Convert.ToInt16(result[2].Trim());
                         athleteName = result[1];
                         teamName = result[3];
-                        points = Convert.ToInt16(result[4].Trim());
+                        points = 0;
+                        Int32.TryParse(result[4].Trim(), out points);
                     }
 
                     int athleteId;
